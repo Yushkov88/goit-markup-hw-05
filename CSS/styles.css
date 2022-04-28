@@ -16,6 +16,7 @@
   --logo: #000000;
   --icon-text: #afb1b8;
   --icon-bgc: #ffffff;
+  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -126,7 +127,22 @@ button {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
+  position: relative;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
   /* outline: 2px solid black; */
+}
+.site-nav .link::after {
+  display: inline-block;
+  content: '';
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+  position: absolute;
+  left: 0;
+  bottom: -1px;
 }
 
 .site-nav .link:hover,
@@ -137,6 +153,9 @@ button {
 .item-nav .link {
   display: flex;
   align-items: center;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
 }
 .link-nav {
   margin-right: 10px;
@@ -286,6 +305,7 @@ button {
   padding-top: 94px;
   /* outline: 2px solid tomato; */
 }
+
 .work-title {
   color: var(--primary-text-color);
   font-size: 36px;
@@ -302,6 +322,25 @@ button {
 .work-list-item {
   flex-basis: calc((100% - 90px) / 3);
   margin-left: 30px;
+  position: relative;
+}
+.bottom-text {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background: rgba(47, 48, 58, 0.8);
+  color: var(--icon-bgc);
 }
 
 /* Наша команда */
@@ -379,12 +418,16 @@ button {
   justify-content: center;
   align-items: center;
   fill: var(--icon-text);
+  transition-property: fill, order-radius, var(--bcg-team-color);
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
 }
 
 .team-list-link:hover,
 .team-list-link:focus {
   background-color: var(--accent-color);
   fill: var(--icon-bgc);
+  border-radius: 100%;
 }
 /* Клиенты */
 .clients-title {
@@ -413,6 +456,9 @@ button {
   box-sizing: border-box;
   border-radius: 4px;
   object-fit: contain;
+  transition-property: fill, border, box-sizing, border-radius;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-link:hover,
@@ -455,6 +501,9 @@ button {
   font-size: 14px;
   line-height: 1.71;
   margin-bottom: 10px;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
   /* outline: 2px solid tomato; */
 }
 
@@ -469,6 +518,9 @@ button {
   line-height: 1.71;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 10px;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
   /* outline: 2px solid tomato; */
 }
 
@@ -506,6 +558,9 @@ button {
   justify-content: center;
   align-items: center;
   fill: var(--icon-bgc);
+  transition-property: border-radius, var(--icon-bgc);
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
 }
 .join-soc-item:not(:last-child) {
   margin-right: 10px;
@@ -514,6 +569,7 @@ button {
 .join-soc-link:focus,
 .join-soc-link:active {
   background-color: var(--accent-color);
+  border-radius: 50%;
 }
 
 /* Портфолио Фильтр*/
@@ -538,6 +594,9 @@ button {
   text-align: center;
   border-radius: 4px;
   border: 1px solid transparent;
+  transition-property: color, var(--bcg-team-color), box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
   /* outline: 2px solid tomato; */
 }
 .filters-list .current {
@@ -562,6 +621,26 @@ button {
 }
 .pictures-list-item {
   width: calc((100% - 60px) / 3);
+}
+.pictures-top-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.pictures-top-text {
+  position: absolute;
+  top: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  color: var(--icon-bgc);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  padding: 63px 24px;
+  transform: translateY(100%);
+  transition: transform 250ms var(--cubic-bezier);
+}
+.pictures-list-item:hover .pictures-top-text {
+  transform: translateY(0%);
 }
 
 .pictures-list-item:not(:nth-child(3n)) {
@@ -598,11 +677,54 @@ button {
 .pictures-link {
   text-decoration: none;
 }
+
 .pictures-list .pictures-link {
   display: block;
+  position: relative;
+  cursor: pointer;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
 }
 .pictures-list .pictures-link:hover,
 .pictures-list .pictures-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms, visibility 250ms;
+}
+.modal {
+  width: 528px;
+  min-height: 581px;
+  background: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
