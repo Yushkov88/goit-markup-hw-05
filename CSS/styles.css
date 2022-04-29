@@ -126,9 +126,9 @@ button {
   padding-top: 32px;
   padding-bottom: 32px;
   cursor: pointer;
-  transition-property: сolor;
+  transition-property: color;
   transition-duration: 250ms;
-  transition-timing-function: var(--cubic-bezier);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* outline: 2px solid black; */
 }
 
@@ -175,8 +175,13 @@ button {
   /* outline: 2px solid black; */
 }
 .contacts .link {
+  display: flex;
   color: var(--secondary-text-color);
+  fill: var(--secondary-text-color);
   text-decoration: none;
+  transition-property: fill, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts > .item-nav:first-child {
   margin-right: 50px;
@@ -184,6 +189,7 @@ button {
 .contacts .link:hover,
 .contacts .link:focus {
   color: var(--accent-color);
+  fill: var(--accent-color);
 }
 
 /* Герой */
@@ -419,7 +425,7 @@ button {
   justify-content: center;
   align-items: center;
   fill: var(--icon-text);
-  transition-property: fill, order-radius, var(--bcg-team-color);
+  transition-property: fill, border-radius, background-color;
   transition-duration: 250ms;
   transition-timing-function: var(--cubic-bezier);
 }
@@ -559,7 +565,7 @@ button {
   justify-content: center;
   align-items: center;
   fill: var(--icon-bgc);
-  transition-property: border-radius, var(--icon-bgc);
+  transition-property: border-radius, background-color;
   transition-duration: 250ms;
   transition-timing-function: var(--cubic-bezier);
 }
@@ -595,7 +601,7 @@ button {
   text-align: center;
   border-radius: 4px;
   border: 1px solid transparent;
-  transition-property: color, var(--bcg-team-color), box-shadow;
+  transition-property: color, background-color, box-shadow;
   transition-duration: 250ms;
   transition-timing-function: var(--cubic-bezier);
   /* outline: 2px solid tomato; */
